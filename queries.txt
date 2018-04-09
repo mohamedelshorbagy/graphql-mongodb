@@ -1,0 +1,78 @@
+
+# ADD User
+mutation {
+    addCustomer(name: "Shorbagy", age: 22, email: "shorbagy2@gmail.com"){
+        name,
+            email,
+            age
+    }
+}
+
+# DELETE User
+mutation {
+   deleteCustomer(id:"5acbbc5b07db00452a46308d") {
+     name,
+     age
+   }
+}
+
+
+
+
+# Get User By ID
+{
+    User(id: "5acbbc5b07db00452a46308d"){
+        name,
+            email,
+            age
+    }
+}
+
+# Get All Users
+{
+    Users{
+        id,
+            email,
+            age
+    }
+}
+
+
+
+
+
+# ADD POST 
+mutation {
+  addPost(body:"Second Post" , user:"5acbc096db2fd04a0e1a1601") {
+    body,
+    user{
+      name,
+      email,
+      age
+    },
+    id
+  }
+}
+
+
+
+# GET POSTS
+{
+  Posts{
+    body,
+    id,
+    user{
+      name,
+      email,
+      age
+    }
+  },
+  Post(id:"5acbc44ed8cbda4e134f74de") {
+    body,
+    id,
+    user{
+      name,
+      email
+    }
+  }
+}
