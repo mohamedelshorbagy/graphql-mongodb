@@ -29,19 +29,14 @@ app.use(cors());
 
 
 // Entry Point For GraphQL
-// # IMPORTING SCHEMAS
-const { UserSchemaModel } = require('./schemas/user');
-const { PostSchemaModel } = require('./schemas/post');
+// # IMPORT MAIN SCHEMAS
+const mainSchema = require('./schemas/main-schema');
 
-// # End Points
-app.use('/graphql/user', expressGraphQL({
-    schema: UserSchemaModel,
+// # MAIN End Point
+app.use('/graphql', expressGraphQL({
+    schema: mainSchema,
     graphiql: true
 }));
-app.use('/graphql/post' , expressGraphQL({
-    schema: PostSchemaModel,
-    graphiql: true
-}))
 
 
 
