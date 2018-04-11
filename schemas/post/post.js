@@ -58,6 +58,9 @@ const getAllPosts = {
 
 
 
+
+
+
 // Mutations
 
 
@@ -71,14 +74,17 @@ const addPost = {
             type: new GraphQLNonNull(GraphQLID)
         }
     },
-    resolve(parentValue, args) {
+    async resolve(parentValue, args) {
         const post = new Post({
             body: args.body,
             user: args.user
         });
 
-        return post
-            .save();
+        const savedPost = await post.save();
+        const populatedResult = await Post.findById(savedPost._id).populate('user');
+
+        return populatedResult;
+        
     }
 }
 
